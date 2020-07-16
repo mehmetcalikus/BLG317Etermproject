@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List</title>
+</head>
+<body>
+
+<h3>Click the links to see the foods and nutritional values of that group</h3>
+<h3>Food Group Names</h3>
+<table border=5>
+
+    {% for row in rows %}
+
+        <tr>
+                <td><a href="/view/{{ row["id"] }}"> {{row["FoodGroupName"]}}</a></td>
+        </tr>
+
+    {% endfor %}
+</table>
+<br><br>
+
+<a href="/">Go back to home page</a>
+
+</body>

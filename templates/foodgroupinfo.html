@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List</title>
+</head>
+<body>
+
+<h3>ABOUT FOOD GROUP</h3>
+<table border=1>
+    <thead>
+        <td>Short Description</td>
+        <td>Nitrogen</td>
+        <td>Protein</td>
+        <td>Fat</td>
+        <td>Calorie</td>
+    </thead>
+
+    {% for row in rows %}
+
+        <tr>
+            <td>{{row["ShortDesc"]}}</td>
+            <td>{{row["Nitrogen"]}}</td>
+            <td>{{row["Protein"]}}</td>
+            <td>{{row["Fat"]}}</td>
+            <td>{{row["Calorie"]}}</td>
+        </tr>
+
+    {% endfor %}
+</table>
+<br><br>
+
+<a href="/">Go back to home page</a>
+
+</body>
+</html>
