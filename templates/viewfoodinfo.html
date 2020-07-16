@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List</title>
+</head>
+<body>
+<h3>Please click the short description(food name) link of the food so that change the other attributes of that food</h3>
+<h3>(such as food group, short and long descriptions, manufacturer and scientific name)</h3>
+
+<table border=5>
+    <tr>
+        <td>Food Names</td>
+        <td>Long Description</td>
+        <td>Manufacturer Name</td>
+        <td>Scientific Name</td>
+    </tr>
+
+    {% for row in rows %}
+
+        <tr>
+            <td><a href="/viewfoodinfos/{{ row["id"] }}"> {{row["short_desc"]}}</a></td>
+            <td> {{row["long_desc"]}}</td>
+            <td> {{row["manufac_name"]}}</td>
+            <td>{{row["sci_name"]}}</td>
+        </tr>
+
+    {% endfor %}
+</table>
+<br><br>
+
+<a href="/">Go back to home page</a>
+
+</body>
+</html>

@@ -44,5 +44,88 @@ def foodGroupInfo(id):
     rows = cur.fetchall();
     return render_template("foodgroupinfo.html",rows = rows)
 
+
+@app.route("/viewfoodinfos")
+def viewFoodInfo():
+    con = sqlite3.connect("usda.sql3")
+    con.text_factory = lambda b: b.decode(errors='ignore')
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute("select id, short_desc, long_desc, manufac_name, sci_name from food")
+    rows = cur.fetchall()
+    return render_template("viewfoodinfo.html", rows=rows)
+
+
+@app.route("/viewfoodinfos/<string:id>", methods=["GET"])
+def viewSelectedFoodInfo(id):
+    con = sqlite3.connect("usda.sql3")
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute("""select fg.name
+    ,short_desc
+    ,long_desc
+    ,manufac_name
+    ,sci_name from food f
+    inner join food_group fg
+    on f.food_group_id = fg.id
+    where f.id = ?""", [id])
+
+    rows = cur.fetchall();
+    return render_template("selectedfoodinfo.html", rows=rows, id=id)
+
+
+@app.route("/updatefoodinfo/<string:id>", methods=["POST", "GET"])
+def enterDetails(id):
+    if request.method == "GET":
+        con = sqlite3.connect("usda.sql3")
+        con.row_factory = sqlite3.Row
+        cur = con.cursor()
+        cur.execute("SELECT name from food_group")
+        rows = cur.fetchall()
+        sends = [each["name"] for each in rows]
+    return render_template("updatefoodinfo.html", sends=sends, id=id)
+
+
+@app.route("/updatedetails/<string:id>", methods=["POST", "GET"])
+def updatedetails(id):
+    if request.method == "POST":
+        try:
+            foodGroupName = str(request.form.get("sends"))
+            shortDesc = request.form["short_desc"]
+            longDesc = request.form["long_desc"]
+            manifacName = request.form["manufac_name"]
+            sciName = request.form["sci_name"]
+
+            with sqlite3.connect("usda.sql3") as con:
+                cur = con.cursor()
+                cur.execute("SELECT id from food_group WHERE name = ?", [foodGroupName])
+                foodGroupIds = cur.fetchall()
+                foodGroupId = foodGroupIds[0]
+
+
+            with sqlite3.connect("usda.sql3") as con:
+                con.row_factory = sqlite3.Row
+                cur = con.cursor()
+                sqlQuery = """UPDATE food
+                    SET food_group_id = "{}"
+                    ,short_desc = "{}"
+                    ,long_desc = "{}"
+                    ,manufac_name = "{}"
+                    ,sci_name = "{}"
+                    WHERE id = {}""".format(int(foodGroupId[0]), str(shortDesc), str(longDesc), str(manifacName),
+                                            str(sciName), id)
+                cur.execute(sqlQuery)
+                con.commit()
+
+
+
+        except Exception as e:
+            con.rollback()
+
+        finally:
+
+            return render_template("/index.html")
+            con.close()
+
 if __name__ == '__main__':
     app.run()

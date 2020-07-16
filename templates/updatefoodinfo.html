@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h2>Food Information</h2>
+
+    <form action = "/updatedetails/{{ id }}" method="post">
+    <table>
+
+        <tr><td>Food Group Name</td><td>
+            <select name= sends method="GET" action="/">
+                {% for token in sends %}
+                    <option value= "{{token}}" SELECTED>{{token}}</option>"
+                {% endfor %}
+            </select>
+        </td></tr>
+        <tr><td>Short Description</td><td><input type="text" name="short_desc"></td></tr>
+        <tr><td>Long Description</td><td><input type="text" name="long_desc"></td></tr>
+        <tr><td>Manufacturer Name</td><td><input type="text" name="manufac_name"></td></tr>
+        <tr><td>Scientific Name</td><td><input type="text" name="sci_name"></td></tr>
+        <tr><td><input type="submit" value="Submit"></td></tr>
+    </table>
+    </form>
+    <h3>After clicking on submit, you can also see your food group change by going to milestone 1 and clicking on the milestone you selected.</h3>
+    <h3>You will already be able to see other changes in milestone 2.</h3>
+</body>
+</html>
