@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List</title>
+</head>
+<body>
+
+<h3>General Informations about selected food.</h3>
+
+<table border=5>
+    <tr>
+        <td>Food Group Name</td>
+        <td>Short Description</td>
+        <td>Long Description</td>
+        <td>Manufacturer Name</td>
+        <td>Scientific Name</td>
+    </tr>
+
+    {% for row in rows %}
+
+        <tr>
+            <td> {{row["name"]}}</td>
+            <td> {{row["short_desc"]}}</td>
+            <td> {{row["long_desc"]}}</td>
+            <td>{{row["manufac_name"]}}</td>
+            <td>{{row["sci_name"]}}</td>
+        </tr>
+
+    {% endfor %}
+</table>
+
+<h3>The table below shows information about the weight of the {{ rows2[0]["short_desc"] }}.</h3>
+<table border=5>
+    <tr>
+        <td>Description</td>
+        <td>Gram of Weight</td>
+    </tr>
+
+    {% for row in rows2 %}
+
+        <tr>
+            <td>{{row["description"]}}</td>
+            <td>{{row["gm_weight"]}}</td>
+        </tr>
+
+    {% endfor %}
+</table>
+
+
+
+
+
+
+<h3>In the table below, You can see the nutritional values of {{ rows3[0]["short_desc"] }}.</h3>
+
+<table border=5>
+    <tr>
+        <td>Nutrient Name</td>
+        <td>Nutrient Amount</td>
+        <td>Unit of Quantity</td>
+    </tr>
+
+    {% for row in rows3 %}
+
+        <tr>
+            <td> {{row["name"]}}</td>
+            <td>{{row["amount"]}}</td>
+            <td>{{row["units"]}}</td>
+        </tr>
+
+    {% endfor %}
+</table>
+
+<br><br>
+<a href="/">Go back to home page</a>
+
+</body>
+</html>
