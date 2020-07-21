@@ -2,10 +2,24 @@
 <html>
 <head>
     <title>List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
 </head>
 <body>
+<h3 style="text-align:left;color:green;">Food information about {{ rows[0]["short_desc"] }}</h3>
 
-<table border=5>
+<table  class="table table-bordered" style="max-width:3000px;">
     <tr>
         <td>Food Group Name</td>
         <td>Short Description</td>
@@ -28,8 +42,7 @@
 </table>
 <br><br>
 
-<h3>Please click the update so that change the other attributes of food</h3>
-
+<h4 style="text-align:left;color:red;">Please click the update so that change the other attributes of food</h4>
 <a href="/updatefoodinfo/{{ id }}">Update</a>
 
 <br><br>

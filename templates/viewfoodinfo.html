@@ -2,17 +2,30 @@
 <html>
 <head>
     <title>List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
 </head>
 <body>
-<h3>Please click the short description(food name) link of the food so that change the other attributes of that food</h3>
-<h3>(such as food group, short and long descriptions, manufacturer and scientific name)</h3>
+<h3 style="text-align:left;color:green;">Please click the short description(food name) link of the food so that change the other attributes of that food</h3>
+<h3 style="text-align:left;color:red;">(such as food group, short and long descriptions, manufacturer and scientific name)</h3>
 
-<table border=5>
+<table border=8 class="table table-bordered" style="max-width:100px;">
     <tr>
-        <td>Food Names</td>
-        <td>Long Description</td>
-        <td>Manufacturer Name</td>
-        <td>Scientific Name</td>
+        <th>Food Names</th>
+        <th>Long Description</th>
+        <th>Manufacturer Name</th>
+        <th>Scientific Name</th>
     </tr>
 
     {% for row in rows %}

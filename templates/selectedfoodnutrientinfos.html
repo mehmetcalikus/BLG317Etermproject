@@ -2,38 +2,64 @@
 <html>
 <head>
     <title>List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+
+    <script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
 </head>
+
 <body>
+<h3 style="text-align:left;color:green;">
+    General Informations about {{rows[0]["short_desc"]}}
+</h3>
 
-<h3>General Informations about selected food.</h3>
-
-<table border=5>
-    <tr>
-        <td>Food Group Name</td>
-        <td>Short Description</td>
-        <td>Long Description</td>
-        <td>Manufacturer Name</td>
-        <td>Scientific Name</td>
-    </tr>
-
-    {% for row in rows %}
+<div>
+<table border=5 class="table table-dark table-striped" style="max-width:300px;" >
 
         <tr>
-            <td> {{row["name"]}}</td>
-            <td> {{row["short_desc"]}}</td>
-            <td> {{row["long_desc"]}}</td>
-            <td>{{row["manufac_name"]}}</td>
-            <td>{{row["sci_name"]}}</td>
+            <th scope="col">Food Group Name</th>
+            <th scope="col">Short Description</th>
+            <th scope="col">Long Description</th>
+            <th scope="col">Manufacturer Name</th>
+            <th scope="col">Scientific Name</th>
         </tr>
 
-    {% endfor %}
+        {% for row in rows %}
+
+            <tr>
+                <td> {{row["name"]}}</td>
+                <td> {{row["short_desc"]}}</td>
+                <td> {{row["long_desc"]}}</td>
+                <td>{{row["manufac_name"]}}</td>
+                <td>{{row["sci_name"]}}</td>
+            </tr>
+
+        {% endfor %}
+
 </table>
 
-<h3>The table below shows information about the weight of the {{ rows2[0]["short_desc"] }}.</h3>
-<table border=5>
+
+<h3 style="text-align:left;color:blue;">
+    The table below shows information about the weight of the {{ rows2[0]["short_desc"] }}.
+</h3>
+
+<table border=5 class="table table-dark table-striped" style="max-width:150px;">
     <tr>
-        <td>Description</td>
-        <td>Gram of Weight</td>
+        <th scope="col">Description</th>
+        <th scope="col">Gram of Weight</th>
     </tr>
 
     {% for row in rows2 %}
@@ -47,17 +73,15 @@
 </table>
 
 
+<h3 style="text-align:left;color:darkred;">
+    In the table below, You can see the nutritional values of {{ rows3[0]["short_desc"] }}
+</h3>
 
-
-
-
-<h3>In the table below, You can see the nutritional values of {{ rows3[0]["short_desc"] }}.</h3>
-
-<table border=5>
+<table border=5 class="table table-dark table-striped" style="max-width:150px;">
     <tr>
-        <td>Nutrient Name</td>
-        <td>Nutrient Amount</td>
-        <td>Unit of Quantity</td>
+        <th scope="col">Nutrient Name</th>
+        <th scope="col">Nutrient Amount</th>
+        <th scope="col">Unit of Quantity</th>
     </tr>
 
     {% for row in rows3 %}
@@ -70,6 +94,7 @@
 
     {% endfor %}
 </table>
+</div>
 
 <br><br>
 <a href="/">Go back to home page</a>

@@ -2,17 +2,36 @@
 <html>
 <head>
     <title>List</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js">
+    </script>
+
+    <script src=
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js">
+    </script>
 </head>
 <body>
 
-<h3>ABOUT FOOD GROUP</h3>
-<table border=1>
+
+
+<h2 style="text-align:left;color:green;">About Food Group {{ rows[0][5] }}</h2>
+<table class="table table-striped" style="max-width:450px;">
     <thead>
-        <td>Short Description</td>
-        <td>Nitrogen</td>
-        <td>Protein</td>
-        <td>Fat</td>
-        <td>Calorie</td>
+        <th scope="col">Short Description</th>
+        <th scope="col">Nitrogen</th>
+        <th scope="col">Protein</th>
+        <th scope="col">Fat</th>
+        <th scope="col">Calorie</th>
     </thead>
 
     {% for row in rows %}
@@ -27,6 +46,7 @@
 
     {% endfor %}
 </table>
+
 <br><br>
 
 <a href="/">Go back to home page</a>
